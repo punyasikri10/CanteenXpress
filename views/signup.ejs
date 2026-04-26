@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Signup</h2>
+
+    <% if(message){ %>
+        <p class="error"><%= message %></p>
+    <% } %>
+
+    <form  enctype="multipart/form-data" action="/signup" method="POST" onsubmit="return validatePassword()">
+        <input type="text" name="firstname" placeholder="First Name" required>
+        <input type="text" name="lastname" placeholder="Last Name">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="number" name="age" placeholder="Age">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        <input type="file" name="profilePic" accept="image/*" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <p style="text-align:center;">
+        Already have an account? <a href="/login">Login</a>
+    </p>
+</div>
+
+<script>
+function validatePassword() {
+    const pass = document.getElementById("password").value;
+    const confirmPass = document.getElementById("confirmPassword").value;
+
+    if (pass !== confirmPass) {
+        alert("Passwords do not match!");
+        return false;
+    }
+    return true;
+}
+</script>
+
+</body>
+</html>

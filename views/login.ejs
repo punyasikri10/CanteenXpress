@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a href="/auth/google" class="btn google-btn">
+    Login with Google
+</a>
+<% if (locals.error) { %> <p style="color:aqua"><%=error %></p> <%} %>
+
+<form action="/login" method="POST">
+    Username: <input type="text" name="username" required><br><br>
+    Password: <input type="password" name="password" required><br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<p>New User? <a href="/signup">Sign up here</a></p>
+
+</body>
+</html>

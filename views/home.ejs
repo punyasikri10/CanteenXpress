@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CanteenXpress - Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="hero-section">
+    <div class="overlay" style="position: relative;">
+
+        <% if(user){ %>
+          
+            <a href="/logout" style="
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                padding: 10px 18px;
+                background-color: red;
+                color: white;
+                text-decoration: none;
+                border-radius: 6px;
+                font-weight: bold;
+                z-index: 1000;
+            ">
+                Logout
+            </a>
+        <% } %>
+
+        <h1 class="main-title">CanteenXpress</h1>
+        <p class="tagline">Delicious food delivered faster inside your campus</p>
+
+        <% if(user){ %>
+
+            <h2 class="welcome-text">Welcome, <%= user.firstname %> 👋</h2>
+
+            <% if(user.profilePic){ %>
+               
+                <img src="<%= user.profilePic %>" class="profile-img">
+            <% } %>
+
+            <!-- Rotating Quote -->
+            <p class="quote" id="quoteText">Good food makes every college day better.</p>
+
+            <div class="menu-buttons">
+                <a href="/menu" class="btn big-btn">🍔 Explore Menu</a>
+            </div>
+
+        <% } else { %>
+
+            <div class="menu-buttons">
+                <a href="/login" class="btn">Login</a>
+                <a href="/signup" class="btn">Sign Up</a>
+            </div>
+
+        <% } %>
+    </div>
+</div>
+
+<!-- FOOD PREVIEW -->
+<div class="food-preview">
+    <h2>Popular Items</h2>
+
+    <div class="food-items">
+        <div class="food-card">
+            <img src="/images/burger.jpeg" class="food-image">
+            <h3>Burger</h3>
+        </div>
+
+        <div class="food-card">
+            <img src="/images/noodles.jpeg" class="food-image">
+            <h3>Noodles</h3>
+        </div>
+
+        <div class="food-card">
+            <img src="/images/coffee.jpeg" class="food-image">
+            <h3>Cold Coffee</h3>
+        </div>
+    </div>
+
+    <a href="/menu" class="btn big-btn">View Full Menu</a>
+</div>
+
+<!-- TODAY SPECIAL -->
+<div class="special">
+    <h2>Today's Special</h2>
+
+    <div class="special-card">
+        <img src="/images/dosa.jpeg" class="special-img">
+
+        <h3>Masala Dosa</h3>
+        <p class="price">₹90</p>
+        <p>Crispy golden dosa served with sambhar and chutneys.</p>
+
+        <a href="/menu" class="btn">Order Now</a>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+    <h2>Why Choose CanteenXpress?</h2>
+
+    <div class="feature-box">
+        <div>📦 Fast Delivery</div>
+        <div>🥘 Fresh Food</div>
+        <div>💸 Affordable Prices</div>
+        <div>📱 Easy Ordering</div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p><strong>Canteen Location:</strong> Chitkara University, Rajpura, Punjab</p>
+    <p><strong>Contact:</strong> +91 98765 43210</p>
+    <p>© 2026 CanteenXpress. All Rights Reserved.</p>
+</footer>
+
+<!-- QUOTE SCRIPT -->
+<script>
+const quotes = [
+    "Good food makes every college day better.",
+    "Hunger ends where CanteenXpress begins 🍔",
+    "Fast delivery. Fresh taste. Happy you.",
+    "Late for class? Not for food 😄",
+    "Because every lecture deserves a snack break."
+];
+
+let i = 0;
+setInterval(() => {
+    i = (i + 1) % quotes.length;
+    document.getElementById("quoteText").innerText = quotes[i];
+}, 2500);
+</script>
+
+</body>
+</html>
